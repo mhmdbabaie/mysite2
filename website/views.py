@@ -11,4 +11,9 @@ def about_views(request):
 
 def contact_views(request):
     return render(request,'website/contact.html')
+
+
+def test_views(request):
+    return render(request,'website/test.html',{'name':'mhmd','lastname':'babaie'})
+
                                          
