@@ -15,5 +15,3 @@ def contact_views(request):
 
 def test_views(request):
     return render(request,'website/test.html',{'name':'mhmd','lastname':'babaie'})
-
-                                         
