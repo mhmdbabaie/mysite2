@@ -7,7 +7,7 @@ app_name= 'blog'
 urlpatterns = [
     path('',blog_views,name='index'),
     path('single',blog_single,name='single'),
-    path('test',test,name='test'),
+    path('<str:name>',test,name='test'),
 ]
 
 
