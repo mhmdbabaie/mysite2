@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 
 def blog_views (request):
@@ -13,6 +13,8 @@ def blog_single (request):
     return render (request,'blog/blog-single.html')
 
 
-def test (request,name):
-    context = {'name': name}
+def test (request,pid):
+    #post = Post.objects.get(id=pid)
+    post = get_object_or_404(Post, pk=pid)
+    context = {'post': post}
     return render (request,'test.html',context)
