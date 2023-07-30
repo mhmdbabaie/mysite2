@@ -18,9 +18,14 @@
 				</p>
 			</div>
 		</div>
-	</div>
+	</div>2008 Jun 12 03:54:25
+	OMC - Martin Weinelt
+	km
+	2008 Jun 12 04:45:24
+	OMC - Martin Weinelt
+	km
 </section>
-<!-- End banner Area -->
+<!-- End banner Area -->  
 
 <!-- Start top-category-widget Area -->
 <section class="top-category-widget-area pt-90 pb-90 ">
@@ -95,16 +100,16 @@
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							<li><a href="#">Food,</a></li>
-							<li><a href="#">Technology,</a></li>
-							<li><a href="#">Politics,</a></li>
-							<li><a href="#">Lifestyle</a></li>
+							{% for cat in post.category.all %}
+							<a href="#">{{ cat.name }}</a> {% if not forloop.last %}, {% endif %}
+							{% endfor %}
+							<post class="category"></post>
 						</ul>
 						<div class="user-details row">
 							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
 								<span class="lnr lnr-user"></span>
 							</p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date}}</a> <span
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"F Y"}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}} Views</a> <span
 									class="lnr lnr-eye"></span></p>
@@ -114,13 +119,13 @@
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+							<img class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:single' pid=post.id %}">
 							<h3>{{post.title}}</h3>
 						</a>
 						<p class="excert">
-							{{post.content}}
+							{{post.snippet}}
 						</p>
 						<a href="blog-single.html" class="primary-btn">View More</a>
 					</div>
